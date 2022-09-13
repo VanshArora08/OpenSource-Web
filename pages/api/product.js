@@ -42,6 +42,31 @@ async function fetchAPI(query, { variables } = {},read ) {
   return product.getProduct.data
 }
 
+export async function createOrder(data){
+  const response = await fetchAPI(`
+    mutation CreateOrder($orderId:String!, $status: String, $currency: String, $amount: Number, $products: String){
+      createOrder(data: { orderId: $orderId, status: $status, currency: $currency, amount: $amount, products: $products}){
+        data {
+          orderId,
+          id
+        },
+        error {
+          data
+        }
+      }
+    }
+  `,{
+   variables:{
+    'orderId': data.orderId,
+    'status': data.status,
+    'currency': data.currency,
+    'amount': data.amount,
+    'products': data.products
+   }
+  }, false);
+  return response.createOrder.data;
+}
+
  export async function getProducts() {
     const products = await fetchAPI(
       ` query GetProducts {
