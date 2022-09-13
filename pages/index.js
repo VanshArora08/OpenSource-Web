@@ -1,10 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+// import NavBar from '../components/NavBar'
 
 export default function Home() {
   return (
+    <>
     <div className='container mx-auto px-4'>
       <img className='object-none object-center w-[100vw] h-[55vh]' src='/skis.jpg' alt='Wasatch Ski Company'/>
       <section className="text-gray-600 body-font">
@@ -20,5 +19,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   )
 }
